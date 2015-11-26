@@ -1,0 +1,10 @@
+# IDE stuff:
+.idea
+
+# javascript libraries
+dojo
+dijit
+font-awesome
+dgrid
+put-selector
+xstyle
