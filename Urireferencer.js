@@ -34,7 +34,13 @@ define([
     startup: function () {
       this.controller.checkUri(this.checkUri).then(lang.hitch(this, function(data) {
         console.log(data);
-        this.dataNode.innerHTML = data.count;
+        var appString = 'Referenties gevonden in: <br>';
+        array.forEach(data.applications, lang.hitch(this, function(app) {
+          if (app.has_references) {
+            appString += app.title + '<br>';
+          }
+        }))
+        this.dataNode.innerHTML = appString;
       }))
     }
   });
