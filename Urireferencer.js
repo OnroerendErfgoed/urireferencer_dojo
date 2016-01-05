@@ -59,7 +59,10 @@ define([
       var content = domConstruct.create('div', { 'class': 'expander-content' }, exp);
 
       domConstruct.create('div', { 'class': 'expander-icon' }, header);
-      var title = '<strong>' + app.title + '</strong>' + '&nbsp;<small>(' + (app.count ? app.count : (app.success ? '0' : 'fout bij controleren')) + ' referenties)</small>';
+
+      var title = '<strong>' + app.title + '</strong>&nbsp;<small>(' +
+        (app.count ? app.count : (app.success ? '0' : 'fout bij controleren')) + ' referenties)</small>';
+
       domConstruct.create('h5', { innerHTML: title }, header);
 
       var ul = domConstruct.create('ul', { 'class': 'nodisk', style: 'padding-left: 20px;' }, content);
