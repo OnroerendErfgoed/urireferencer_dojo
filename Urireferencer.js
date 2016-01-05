@@ -59,20 +59,20 @@ define([
       var content = domConstruct.create('div', { 'class': 'expander-content' }, exp);
 
       domConstruct.create('div', { 'class': 'expander-icon' }, header);
-      var title = app.title + ' (' + (app.count ? '<strong>' + app.count + '</strong>' : (app.success ? '0' : 'fout bij controleren')) + ' referenties)';
-      domConstruct.create('h4', { innerHTML: title }, header);
+      var title = '<strong>' + app.title + '</strong>' + ' (' + (app.count ? app.count : (app.success ? '0' : 'fout bij controleren')) + ' referenties)';
+      domConstruct.create('h5', { innerHTML: title }, header);
 
       var ul = domConstruct.create('ul', { 'class': 'nodisk', style: 'padding-left: 20px;' }, content);
 
-      if (app.success && app.count > 0) {
+      if (app.success && app.has_references) {
         array.forEach(app.items, lang.hitch(this, function(item) {
-          domConstruct.create('li', { innerHTML: '<a target="_blank" href="' + item.uri + '">' + item.title + '</a>'}, ul);
+          domConstruct.create('li', { innerHTML: '<i class="fa fa-angle-right"></i>&nbsp;<a target="_blank" href="' + item.uri + '">' + item.title + '</a>'}, ul);
         }));
       } else {
         if (!app.success) {
-          domConstruct.create('li', { innerHTML: 'Er ging iets mis bij het controleren van de referenties'}, ul);
+          domConstruct.create('li', { innerHTML: 'Er ging iets mis bij het controleren van de referenties.'}, ul);
         } else {
-          domConstruct.create('li', { innerHTML: 'Er zijn geen referenties gevonden'}, ul);
+          domConstruct.create('li', { innerHTML: 'Er zijn geen referenties gevonden.'}, ul);
         }
       }
 
