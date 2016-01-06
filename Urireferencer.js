@@ -32,6 +32,7 @@ define([
     ssoToken: null,
     checkUri: null,
     totalCount: 0,
+    parent: null,
 
     postCreate: function () {
       this.inherited(arguments);
@@ -43,13 +44,15 @@ define([
 
     startup: function () {
       this.controller.checkUri(this.checkUri).then(lang.hitch(this, function(data) {
-        console.log(data);
         this.referenceCount.innerHTML = data.count;
         array.forEach(data.applications, lang.hitch(this, function(app) {
           this._createExpanderElement(app);
         }));
         domConstruct.destroy(this.referenceLoadingMessage);
         this.expanderControls.style.display = 'inline-block';
+        if (this.parent) {
+          this.parent.resize();
+        }
       }))
     },
 
