@@ -47,7 +47,23 @@ define([
         array.forEach(data.applications, lang.hitch(this, function(app) {
           this._createExpanderElement(app);
         }));
-        domConstruct.destroy(this.referenceLoadingMessage);
+        this.referenceLoadingMessage.style.display = 'none';
+        this.expanderControls.style.display = 'inline-block';
+      }))
+    },
+
+    checkUri: function(uri) {
+      this.referenceLoadingMessage.style.display = 'none';
+      this.expanderControls.style.display = 'none';
+
+      domConstruct.empty(this.expanderContainer);
+
+      this.controller.checkUri(uri).then(lang.hitch(this, function(data) {
+        this.referenceCount.innerHTML = data.count;
+        array.forEach(data.applications, lang.hitch(this, function(app) {
+          this._createExpanderElement(app);
+        }));
+        this.referenceLoadingMessage.style.display = 'none';
         this.expanderControls.style.display = 'inline-block';
       }))
     },
