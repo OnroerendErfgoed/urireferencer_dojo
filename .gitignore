@@ -3,8 +3,5 @@
 
 # javascript libraries
 dojo
-dijit
 font-awesome
-dgrid
-put-selector
-xstyle
+node_modules

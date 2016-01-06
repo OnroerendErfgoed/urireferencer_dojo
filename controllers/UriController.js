@@ -3,13 +3,9 @@
  */
 define([
   'dojo/_base/declare',
-  'dojo/_base/lang',
-  'dojo/Deferred',
   'dojo/request/xhr'
 ], function(
   declare,
-  lang,
-  Deferred,
   xhr
 ) {
   return declare(null, /** @lends module:controllers/UriController# */ {
@@ -34,7 +30,7 @@ define([
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
-      })
+      });
     }
 
   });

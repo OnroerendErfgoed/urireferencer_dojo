@@ -38,7 +38,7 @@ define([
       this.controller = new UriController({
         uriUrl: this.uriUrl,
         ssoToken: this.ssoToken
-      })
+      });
     },
 
     startup: function () {
@@ -49,7 +49,7 @@ define([
         }));
         this.referenceLoadingMessage.style.display = 'none';
         this.expanderControls.style.display = 'inline-block';
-      }))
+      }));
     },
 
     recheckUri: function(uri) {
@@ -65,7 +65,7 @@ define([
         }));
         this.referenceLoadingMessage.style.display = 'none';
         this.expanderControls.style.display = 'inline-block';
-      }))
+      }));
     },
 
     _createExpanderElement: function(app) {
@@ -82,9 +82,13 @@ define([
 
       var ul = domConstruct.create('ul', { 'class': 'nodisk', style: 'padding-left: 20px;' }, content);
 
-      if (app.success && app.has_references) {
+      if (
+        app.success &&
+        app.has_references // jshint ignore:line
+      ) {
         array.forEach(app.items, lang.hitch(this, function(item) {
-          domConstruct.create('li', { innerHTML: '<i class="fa fa-angle-right"></i>&nbsp;<a target="_blank" href="' + item.uri + '">' + item.title + '</a>'}, ul);
+          domConstruct.create('li', { innerHTML: '<i class="fa fa-angle-right"></i>&nbsp;<a target="_blank" href="' +
+            item.uri + '">' + item.title + '</a>'}, ul);
         }));
       } else {
         if (!app.success) {
@@ -102,7 +106,7 @@ define([
     _toggleExpander: function(evt) {
       evt ? evt.preventDefault() : null;
       var expander = evt.target.closest('.expander');
-      var container = expander.closest('.expander-container');
+      //var container = expander.closest('.expander-container');
 
       // Close other expanded elements // Excluded here because of showAll/closeAll
       //query(container).children('.expander').forEach(function(child) {
