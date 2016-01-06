@@ -52,7 +52,7 @@ define([
       }))
     },
 
-    checkUri: function(uri) {
+    recheckUri: function(uri) {
       this.referenceLoadingMessage.style.display = 'none';
       this.expanderControls.style.display = 'none';
 
