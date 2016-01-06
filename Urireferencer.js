@@ -53,7 +53,7 @@ define([
     },
 
     recheckUri: function(uri) {
-      this.referenceLoadingMessage.style.display = 'none';
+      this.referenceLoadingMessage.style.display = 'block';
       this.expanderControls.style.display = 'none';
 
       domConstruct.empty(this.expanderContainer);
