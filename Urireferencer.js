@@ -32,7 +32,6 @@ define([
     ssoToken: null,
     checkUri: null,
     totalCount: 0,
-    parent: null,
 
     postCreate: function () {
       this.inherited(arguments);
@@ -50,9 +49,6 @@ define([
         }));
         domConstruct.destroy(this.referenceLoadingMessage);
         this.expanderControls.style.display = 'inline-block';
-        if (this.parent) {
-          this.parent.resize();
-        }
       }))
     },
 
