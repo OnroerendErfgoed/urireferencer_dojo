@@ -16,6 +16,7 @@ define([
 
     uriUrl: null,
     ssoToken: null,
+    _target: '/references?uri=',
 
     /**
      * Module die instaat voor de 'ajax calls' die naar de server gemaakt worden voor het controleren van de uri.
@@ -27,7 +28,7 @@ define([
     },
 
     checkUri: function(uri) {
-      return xhr(this.uriUrl + uri, {
+      return xhr(this.uriUrl + this._target + uri, {
         method: 'GET',
         handleAs: 'json',
         headers: {
