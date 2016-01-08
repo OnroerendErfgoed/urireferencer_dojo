@@ -9,7 +9,9 @@
     "tests",
     ".bowerrc",
     ".gitignore",
-    "README.md"
+    "README.md",
+    "Gruntfiles.js",
+    ".jshintrc"
   ],
   "dependencies": {
     "dojo": "~1.10.4",
