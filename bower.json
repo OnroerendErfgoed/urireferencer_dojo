@@ -9,10 +9,13 @@
     "tests",
     ".bowerrc",
     ".gitignore",
-    "README.md"
+    "README.md",
+    "Gruntfile.js",
+    ".jshintrc"
   ],
   "dependencies": {
     "dojo": "~1.10.4",
+    "dijit": "~1.10.4",
     "font-awesome": "~4.3.0"
   }
 }

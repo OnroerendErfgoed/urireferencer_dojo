@@ -1,5 +1,7 @@
+/* jshint unused:false */
+
 var miniExcludes = {
-		"urireferencer_dojo/README.md": 1
+		'urireferencer_dojo/README.md': 1
 	},
 	amdExcludes = {
 	},
