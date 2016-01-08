@@ -5,8 +5,7 @@ Dojo widget that intereacts with a [UriRegistry](https://github.com/OnroerendErf
 Usage:
 ```javascript
    var widget = new Urireferencer({
-       uriUrl: 'https://dev-id.erfgoed.net/registry/references?uri=',
-       ssoToken: 'nzfzf156ezf',
+       uriUrl: 'https://dev-id.erfgoed.net/registry',
        checkUri: 'https://dev-id.erfgoed.net/actoren/1'
    }, 'widgetNode');
 ```

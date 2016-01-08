@@ -11,7 +11,6 @@ define([
   return declare(null, /** @lends module:controllers/UriController# */ {
 
     uriUrl: null,
-    ssoToken: null,
     _target: '/references?uri=',
 
     /**

@@ -29,15 +29,13 @@ define([
     templateString: template,
     uriUrl: null,
     controller: null,
-    ssoToken: null,
     checkUri: null,
     totalCount: 0,
 
     postCreate: function () {
       this.inherited(arguments);
       this.controller = new UriController({
-        uriUrl: this.uriUrl,
-        ssoToken: this.ssoToken
+        uriUrl: this.uriUrl
       });
     },
 

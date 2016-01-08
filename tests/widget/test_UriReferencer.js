@@ -6,8 +6,7 @@ require([
 ) {
 
 	var widget = new Urireferencer({
-		uriUrl: 'https://dev-id.erfgoed.net/registry/references?uri=',
-		ssoToken: 'u2_654897',
+		uriUrl: 'https://dev-id.erfgoed.net/registry',
 		checkUri: 'https://dev-id.erfgoed.net/actoren/1'
 	}, 'widgetNode');
 	widget.startup();
