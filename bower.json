@@ -10,7 +10,7 @@
     ".bowerrc",
     ".gitignore",
     "README.md",
-    "Gruntfiles.js",
+    "Gruntfile.js",
     ".jshintrc"
   ],
   "dependencies": {
