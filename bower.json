@@ -1,7 +1,6 @@
 {
   "name": "Urireferencer_dojo",
   "description": "Urireferencer dojo widget",
-  "version": "0.2.0",
   "main": "Urireferencer.js",
   "ignore": [
     "doc",
@@ -14,8 +13,8 @@
     ".jshintrc"
   ],
   "dependencies": {
-    "dojo": "~1.10.4",
-    "dijit": "~1.10.4",
-    "font-awesome": "~4.3.0"
+    "dijit": "~1.12.1",
+    "dojo": "~1.12.1",
+    "font-awesome": "~4.6.3"
   }
 }
