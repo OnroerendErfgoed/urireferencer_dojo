@@ -59,6 +59,10 @@
   border-bottom: 1px solid lightgray;
 }
 
+.expander-controls i.fa {
+  color: #753f7f;
+}
+
 .expander-controls a {
   float: right;
   color: gray;

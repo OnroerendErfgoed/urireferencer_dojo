@@ -42,6 +42,12 @@ define([
     startup: function () {
       this.controller.checkUri(this.checkUri).then(lang.hitch(this, function(data) {
         this.referenceCount.innerHTML = data.count;
+
+        if (data.zichtbaarheid_tekst) {
+          this.zichtbaarheidsNode.innerHTML = data.zichtbaarheid_tekst;
+          domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
+        }
+
         array.forEach(data.applications, lang.hitch(this, function(app) {
           this._createExpanderElement(app);
         }));
@@ -53,11 +59,17 @@ define([
     recheckUri: function(uri) {
       this.referenceLoadingMessage.style.display = 'block';
       this.expanderControls.style.display = 'none';
-
+      domClass.add(this.zichtbaarheidsNodeContainer, 'hide');
       domConstruct.empty(this.expanderContainer);
 
       this.controller.checkUri(uri).then(lang.hitch(this, function(data) {
         this.referenceCount.innerHTML = data.count;
+        
+        if (data.zichtbaarheid_tekst) {
+          this.zichtbaarheidsNode.innerHTML = data.zichtbaarheid_tekst;
+          domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
+        }
+
         array.forEach(data.applications, lang.hitch(this, function(app) {
           this._createExpanderElement(app);
         }));
