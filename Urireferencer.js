@@ -5,7 +5,6 @@ define([
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
   'dojo/text!./templates/Urireferencer.html',
-  './controllers/UriController',
   'dojo/dom-construct',
   'dojo/dom-class',
   'dojo/on',
@@ -18,7 +17,6 @@ define([
   WidgetBase,
   TemplatedMixin,
   template,
-  UriController,
   domConstruct,
   domClass,
   on,
@@ -27,55 +25,28 @@ define([
   return declare([WidgetBase, TemplatedMixin], {
 
     templateString: template,
-    uriUrl: null,
-    controller: null,
-    checkUri: null,
-    totalCount: 0,
+    totalRefTekst: null,
+    applications: null,
+    zichtbaarheidTekst: null,
 
     postCreate: function () {
       this.inherited(arguments);
-      this.controller = new UriController({
-        uriUrl: this.uriUrl
-      });
     },
 
     startup: function () {
-      this.controller.checkUri(this.checkUri).then(lang.hitch(this, function(data) {
-        this.referenceCount.innerHTML = data.count;
+      this.referenceCount.innerHTML = data.count;
 
-        if (data.zichtbaarheid_tekst) {
-          this.zichtbaarheidsNode.innerHTML = data.zichtbaarheid_tekst;
-          domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
-        }
+      if (zichtbaarheidTekst) {
+        this.zichtbaarheidsNode.innerHTML = zichtbaarheidTekst;
+        domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
+      }
+      this.referenceCount.innerHTML = totalRefTekst;
 
-        array.forEach(data.applications, lang.hitch(this, function(app) {
-          this._createExpanderElement(app);
-        }));
-        this.referenceLoadingMessage.style.display = 'none';
-        this.expanderControls.style.display = 'inline-block';
+      array.forEach(applications, lang.hitch(this, function (app) {
+        this._createExpanderElement(app);
       }));
-    },
-
-    recheckUri: function(uri) {
-      this.referenceLoadingMessage.style.display = 'block';
-      this.expanderControls.style.display = 'none';
-      domClass.add(this.zichtbaarheidsNodeContainer, 'hide');
-      domConstruct.empty(this.expanderContainer);
-
-      this.controller.checkUri(uri).then(lang.hitch(this, function(data) {
-        this.referenceCount.innerHTML = data.count;
-        
-        if (data.zichtbaarheid_tekst) {
-          this.zichtbaarheidsNode.innerHTML = data.zichtbaarheid_tekst;
-          domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
-        }
-
-        array.forEach(data.applications, lang.hitch(this, function(app) {
-          this._createExpanderElement(app);
-        }));
-        this.referenceLoadingMessage.style.display = 'none';
-        this.expanderControls.style.display = 'inline-block';
-      }));
+      this.referenceLoadingMessage.style.display = 'none';
+      this.expanderControls.style.display = 'inline-block';
     },
 
     _createExpanderElement: function(app) {
@@ -116,18 +87,7 @@ define([
     _toggleExpander: function(evt) {
       evt ? evt.preventDefault() : null;
       var expander = evt.target.closest('.expander');
-      //var container = expander.closest('.expander-container');
 
-      // Close other expanded elements // Excluded here because of showAll/closeAll
-      //query(container).children('.expander').forEach(function(child) {
-      //  if (child != expander) {
-      //    if (domClass.contains(child, 'expander-expanded')){
-      //      domClass.remove(child, 'expander-expanded');
-      //    }
-      //  }
-      //});
-
-      // Toggle this element
       if (domClass.contains(expander, 'expander-expanded')) {
         domClass.remove(expander, 'expander-expanded');
       } else {
