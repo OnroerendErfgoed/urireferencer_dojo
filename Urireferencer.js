@@ -34,11 +34,11 @@ define([
     },
 
     startup: function () {
-      if (zichtbaarheidTekst) {
-        this.zichtbaarheidsNode.innerHTML = zichtbaarheidTekst;
+      if (this.zichtbaarheidTekst) {
+        this.zichtbaarheidsNode.innerHTML = this.zichtbaarheidTekst;
         domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
       }
-      this.referenceCount.innerHTML = totalRefTekst;
+      this.referenceCount.innerHTML = this.totalRefTekst;
 
       array.forEach(applications, lang.hitch(this, function (app) {
         this._createExpanderElement(app);
