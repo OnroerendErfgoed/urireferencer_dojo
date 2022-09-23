@@ -34,8 +34,6 @@ define([
     },
 
     startup: function () {
-      this.referenceCount.innerHTML = data.count;
-
       if (zichtbaarheidTekst) {
         this.zichtbaarheidsNode.innerHTML = zichtbaarheidTekst;
         domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
