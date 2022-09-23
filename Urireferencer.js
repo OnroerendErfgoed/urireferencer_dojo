@@ -40,7 +40,7 @@ define([
       }
       this.referenceCount.innerHTML = this.totalRefTekst;
 
-      array.forEach(applications, lang.hitch(this, function (app) {
+      array.forEach(this.applications, lang.hitch(this, function (app) {
         this._createExpanderElement(app);
       }));
       this.referenceLoadingMessage.style.display = 'none';
