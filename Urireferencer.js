@@ -5,17 +5,18 @@ define([
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
   'dojo/text!./templates/Urireferencer.html',
+  './controllers/ImageController',
   'dojo/dom-construct',
   'dojo/dom-class',
   'dojo/on',
-  'dojo/query',
-  'dojo/NodeList-traverse'
+  'dojo/query'
 ], function (
   declare,
   lang,
   array,
   WidgetBase,
   TemplatedMixin,
+  ImageController,
   template,
   domConstruct,
   domClass,
@@ -25,26 +26,37 @@ define([
   return declare([WidgetBase, TemplatedMixin], {
 
     templateString: template,
-    totalRefTekst: null,
-    applications: null,
-    zichtbaarheidTekst: null,
+    imageId: null,
+    controller: null,
 
     postCreate: function () {
       this.inherited(arguments);
+      this.controller = new ImageController();
     },
 
     startup: function () {
-      if (this.zichtbaarheidTekst) {
-        this.zichtbaarheidsNode.innerHTML = this.zichtbaarheidTekst;
-        domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
-      }
-      this.referenceCount.innerHTML = this.totalRefTekst;
-
-      array.forEach(this.applications, lang.hitch(this, function (app) {
-        this._createExpanderElement(app);
-      }));
-      this.referenceLoadingMessage.style.display = 'none';
-      this.expanderControls.style.display = 'inline-block';
+      this.controller.getImageKoppelingen(this.imageId).then(
+        lang.hitch(this, function (data) {
+          if (data.zichtbaarheidTekst) {
+            this.zichtbaarheidsNode.innerHTML = data.zichtbaarheidTekst;
+            domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
+          }
+          this.referenceCount.innerHTML = data.totalRefTekst;
+          array.forEach(data.applications, lang.hitch(this, function (app) {
+            this._createExpanderElement(app);
+          }));
+          this.referenceLoadingMessage.style.display = 'none';
+          this.expanderControls.style.display = 'inline-block';
+        }),
+        function (error) {
+          console.error('Fout bij het ophalen van koppelingen', error);
+          topic.publish('dGrowl', error.response.data.message + ': ' + error.response.data.errors, {
+            'title': 'Fout bij het ophalen van koppelingen',
+            'sticky': true,
+            'channel': 'error'
+          });
+        }
+      )
     },
 
     _createExpanderElement: function(app) {
