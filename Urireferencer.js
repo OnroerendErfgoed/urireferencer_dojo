@@ -9,7 +9,8 @@ define([
   'dojo/dom-construct',
   'dojo/dom-class',
   'dojo/on',
-  'dojo/query'
+  'dojo/query',
+  'dojo/NodeList-traverse'
 ], function (
   declare,
   lang,
