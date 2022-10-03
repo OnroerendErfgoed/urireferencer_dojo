@@ -16,15 +16,14 @@ define([
   array,
   WidgetBase,
   TemplatedMixin,
-  ImageController,
   template,
+  ImageController,
   domConstruct,
   domClass,
   on,
   query
 ) {
   return declare([WidgetBase, TemplatedMixin], {
-
     templateString: template,
     imageId: null,
     controller: null,
