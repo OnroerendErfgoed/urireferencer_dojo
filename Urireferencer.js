@@ -37,11 +37,11 @@ define([
     startup: function () {
       this.controller.getImageKoppelingen(this.imageId).then(
         lang.hitch(this, function (data) {
-          if (data.zichtbaarheidTekst) {
-            this.zichtbaarheidsNode.innerHTML = data.zichtbaarheidTekst;
+          if (data.zichtbaarheid_tekst) {
+            this.zichtbaarheidsNode.innerHTML = data.zichtbaarheid_tekst;
             domClass.remove(this.zichtbaarheidsNodeContainer, 'hide');
           }
-          this.referenceCount.innerHTML = data.totalRefTekst;
+          this.referenceCount.innerHTML = data.total_ref_tekst;
           array.forEach(data.applications, lang.hitch(this, function (app) {
             this._createExpanderElement(app);
           }));
