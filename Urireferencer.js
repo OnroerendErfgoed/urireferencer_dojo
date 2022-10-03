@@ -49,7 +49,6 @@ define([
           this.expanderControls.style.display = 'inline-block';
         }),
         function (error) {
-          console.error('Fout bij het ophalen van koppelingen', error);
           topic.publish('dGrowl', error.response.data.message + ': ' + error.response.data.errors, {
             'title': 'Fout bij het ophalen van koppelingen',
             'sticky': true,
@@ -59,7 +58,7 @@ define([
       )
     },
 
-    _createExpanderElement: function(app) {
+    _createExpanderElement: function (app) {
       var exp = domConstruct.create('div', { 'class': 'expander' }, this.expanderContainer);
       var header = domConstruct.create('div', { 'class': 'expander-header' }, exp);
       var content = domConstruct.create('div', { 'class': 'expander-content' }, exp);
@@ -73,23 +72,18 @@ define([
 
       var ul = domConstruct.create('ul', { 'class': 'nodisk', style: 'padding-left: 20px;' }, content);
 
-      if (
-        app.success &&
-        app.has_references // jshint ignore:line
-      ) {
-        array.forEach(app.items, lang.hitch(this, function(item) {
-          domConstruct.create('li', { innerHTML: '<i class="fa fa-angle-right"></i>&nbsp;<a target="_blank" href="' +
-            item.uri + '">' + item.title + '</a>'}, ul);
-        }));
-      } else {
-        if (!app.success) {
-          domConstruct.create('li', { innerHTML: 'Er ging iets mis bij het controleren van de referenties.'}, ul);
-        } else {
-          domConstruct.create('li', { innerHTML: 'Er zijn geen referenties gevonden.'}, ul);
-        }
+      array.forEach(app.items, lang.hitch(this, function (item) {
+        domConstruct.create('li', {
+          innerHTML: '<i class="fa fa-angle-right"></i>&nbsp;<a target="_blank" href="' +
+            item.uri + '">' + item.title + '</a>'
+        }, ul);
+      }));
+
+      if (app.items === 0) {
+        domConstruct.create('li', { innerHTML: 'Er zijn geen referenties gevonden.' }, ul);
       }
 
-      on(header, 'click', lang.hitch(this, function(evt) {
+      on(header, 'click', lang.hitch(this, function (evt) {
         this._toggleExpander(evt);
       }));
     },
