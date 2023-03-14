@@ -4,13 +4,11 @@
   </div>
   <div class="expander-controls" data-dojo-attach-point="expanderControls" style="display: none;">
     <div style="width: 100%; float: left;">
-      <div style="float: left; font-size: 20px;"><span data-dojo-attach-point="referenceCount"></span></div>
+      <div style="float: left; font-size: 20px;">Er werden <span data-dojo-attach-point="referenceCount" style="font-weight: bold;">0</span> referenties gevonden.</div>
       <small><a href="#" data-dojo-attach-event="onClick: _closeAll" title="Verberg alles"><i class="fa fa-chevron-up"></i> Alles verbergen</a></small>
       <small><a href="#" data-dojo-attach-event="onClick: _openAll"><i title="Toon alles" class="fa fa-chevron-down"></i> Alles tonen</a></small>
     </div>
-    <div data-dojo-attach-point="zichtbaarheidsNodeContainer" class="hide">
-      <i class="fa fa-info-circle"></i> <span data-dojo-attach-point="zichtbaarheidsNode"></span>
-    </div>
+    <div style="float: left;"><small>(Max. 5 referenties per applicatie getoond)</small></div>
   </div>
   <div class="expander-container" data-dojo-attach-point="expanderContainer">
   </div>
