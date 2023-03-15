@@ -1,3 +1,13 @@
+.tabs-content {
+  background: rgb(237, 237, 237);
+  padding: 5px 10px;
+  margin-top: 1px;
+}
+
+.tabs dd {
+  margin-right: 1px !important;
+}
+
 .urireferencer {
   max-height: 100%;
   overflow: auto;
@@ -11,7 +21,7 @@
 }
 
 .expander-container .expander {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid rgb(237, 237, 237);
   display: inline-block;
   width: 100%;
   padding: 0px 20px 0px 10px;
@@ -38,7 +48,7 @@
 }
 
 .expander-container .expander .expander-icon:after {
-  content: '\f078';
+  content: "\f078";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -46,7 +56,7 @@
 }
 
 .expander-container .expander.expander-expanded .expander-icon:after {
-  content: '\f077';
+  content: "\f077";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -56,7 +66,7 @@
 .expander-controls {
   width: 100%;
   padding-bottom: 10px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid rgb(237, 237, 237);
 }
 
 .expander-controls a {
@@ -64,3 +74,5 @@
   color: gray;
   padding-right: 18px;
 }
+
+/*# sourceMappingURL=urireferencer.css.map */
