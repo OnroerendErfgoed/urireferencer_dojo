@@ -16,13 +16,17 @@
   "directories": {
     "lib": "."
   },
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-compass": "^1.1.1",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-dojo": "^1.1.2"
+  "dependencies": {
+    "dijit": "~1.17.3",
+    "dojo": "~1.17.3",
+    "font-awesome": "~4.7.0",
+    "pyoes": "https://gitpkg.now.sh/OnroerendErfgoed/pyoes/npm-packages/pyoes?0.16.1"
   },
-  "license": "SEE LICENSE IN LICENSE"
+  "devDependencies": {
+    "sass": "^1.49.9"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "compile-css": "sass resources/scss/urireferencer.scss resources/css/urireferencer.css -I node_modules --quiet-deps"
+  }
 }
